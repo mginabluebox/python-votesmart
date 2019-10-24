@@ -50,14 +50,8 @@ class WebAddress(VotesmartApiObject):
 
 class Bio(object):
     def __init__(self, d):
-        try:
-            self.__dict__.update(d['election'])
-        except Exception:
-            pass
-        try:
-            self.__dict__.update(d['office'])
-        except Exception:
-            pass
+        self.__dict__.update(d['election'])
+        self.__dict__.update(d['office'])
         self.__dict__.update(d['candidate'])
 
     def __repr__(self):
@@ -278,7 +272,7 @@ class votesmart(object):
         def getBio(candidateId):
             params = {'candidateId': candidateId}
             result = votesmart._apicall('CandidateBio.getBio', params)
-            return Bio(result['bio'])
+            return result['bio']
 
         @staticmethod
         def getAddlBio(candidateId):
