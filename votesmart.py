@@ -50,8 +50,8 @@ class WebAddress(VotesmartApiObject):
 
 class Bio(object):
     def __init__(self, d):
-        #self.__dict__.update(d['election'])
-        #self.__dict__.update(d['office'])
+        self.__dict__.update(d['election'])
+        self.__dict__.update(d['office'])
         self.__dict__.update(d['candidate'])
 
     def __repr__(self):
