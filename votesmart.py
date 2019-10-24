@@ -50,9 +50,13 @@ class WebAddress(VotesmartApiObject):
 
 class Bio(object):
     def __init__(self, d):
-        self.__dict__.update(d['election'])
-        self.__dict__.update(d['office'])
         self.__dict__.update(d['candidate'])
+        self.__dict__.update(d['office'])
+        try:
+            self.__dict__.update(d['election'])
+        except Exception:
+            print("no election")
+            pass
 
     def __repr__(self):
         return '%s(%r)' % (self.__class__.__name__, self.__dict__)
