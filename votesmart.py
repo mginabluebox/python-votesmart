@@ -272,7 +272,7 @@ class votesmart(object):
         def getBio(candidateId):
             params = {'candidateId': candidateId}
             result = votesmart._apicall('CandidateBio.getBio', params)
-            return result['bio']
+            return _result_to_obj(Bio,result['bio'])
 
         @staticmethod
         def getAddlBio(candidateId):
